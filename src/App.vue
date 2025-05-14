@@ -1,9 +1,9 @@
 <script setup>
-import HelloWorld from '@/components/HelloWorld.vue'
+import TemplateHomework from '@/components/TemplateHomework.vue'
 </script>
 
 <template>
-  <HelloWorld msg="Otus Courses First Homework" />
+  <TemplateHomework />
 </template>
 
 <style scoped>
