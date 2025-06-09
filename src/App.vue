@@ -1,22 +1,18 @@
 <template>
-  <div id="app">
-    <ProductsPage />
+  <div>
+    <Navigation />
+    <router-view />
   </div>
 </template>
 
 <script setup>
-
-import ProductsPage from '@/pages/ProductsPage.vue';
+import Navigation from './components/Navigation.vue'
 </script>
 
 <style>
-#app {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1rem;
+body {
   font-family: Arial, sans-serif;
-}
-hr {
-  margin: 2rem 0;
+  margin: 0;
+  padding: 0;
 }
 </style>

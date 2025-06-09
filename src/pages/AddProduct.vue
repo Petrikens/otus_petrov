@@ -26,10 +26,10 @@
 
 <script setup>
 import { Field, Form, ErrorMessage } from 'vee-validate';
+import { useProductStore } from '../store/products'
+import { useRouter } from 'vue-router'
 import * as yup from 'yup';
-import { defineEmits } from 'vue';
 
-const emit = defineEmits(['product-created']);
 const productValidationSchema = yup.object({
   title: yup.string().required(),
   price: yup.number().required().positive(),
@@ -37,9 +37,13 @@ const productValidationSchema = yup.object({
   category: yup.string().required()
 })
 
-const createProduct = values => {
-  emit('product-created', values);
-};
+const store = useProductStore()
+const router = useRouter()
+
+const createProduct = async (values) => {
+  store.addProduct(values)
+  router.push('/')
+}
 </script>
 
 <style>
@@ -59,3 +63,4 @@ button {
   padding: 0.5rem 1rem;
 }
 </style>
+
