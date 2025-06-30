@@ -8,7 +8,7 @@
 
 <script setup>
 import { useRoute } from 'vue-router'
-import { useProduct } from '../composables/useProduct'
+import { useProduct } from '@/composables/useProduct'
 
 const route = useRoute()
 const { product, loading } = useProduct(route.params.id)

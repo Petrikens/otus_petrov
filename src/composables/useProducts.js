@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue'
-import { useProductStore } from '../store/products'
+import { useProductStore } from '@/store/products'
 
 export function useProducts() {
     const store = useProductStore()

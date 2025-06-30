@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { useCartStore } from '../store/cart'
+import { useCartStore } from '@/store/cart'
 
 const cart = useCartStore()
 </script>

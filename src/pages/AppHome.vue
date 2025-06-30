@@ -11,10 +11,10 @@
 </template>
 
 <script setup>
-import { useProducts } from '../composables/useProducts'
-import ProductCard from '../components/ProductCard.vue'
-import { useCartStore } from '../store/cart'
-import { useProductStore } from '../store/products'
+import { useProducts } from '@/composables/useProducts'
+import ProductCard from '@/components/ProductCard.vue'
+import { useCartStore } from '@/store/cart'
+import { useProductStore } from '@/store/products'
 
 const { loading } = useProducts()
 const cart = useCartStore()

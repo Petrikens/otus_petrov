@@ -1,28 +1,33 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-import Home from '../pages/Home.vue'
-import ProductDetails from '../pages/ProductDetails.vue'
-import AddProduct from '../pages/AddProduct.vue'
-import Cart from '../pages/Cart.vue'
-import Checkout from '../pages/Checkout.vue'
-import Login from '../pages/Login.vue'
-
-const routes = [
-    { path: '/', component: Home },
-    { path: '/product/:id', component: ProductDetails },
-    { path: '/add-product', component: AddProduct },
-    { path: '/cart', component: Cart },
-    { path: '/checkout', component: Checkout },
-    {
-        path: '/login',
-        component: Login,
-        meta: { public: true }
-    },
-]
+import AppHome from '@/pages/AppHome.vue' // главный компонент загружается сразу
+import { ROUTES } from '@/constants.js'
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes: [
+        { path: ROUTES.HOME, component: AppHome },
+        {
+            path: ROUTES.PRODUCT_DETAILS,
+            component: () => import('@/pages/AppProductDetails.vue')
+        },
+        {
+            path: ROUTES.ADD_PRODUCT,
+            component: () => import('@/pages/AppAddProduct.vue')
+        },
+        {
+            path: ROUTES.CART,
+            component: () => import('@/pages/AppCart.vue')
+        },
+        {
+            path: ROUTES.CHECKOUT,
+            component: () => import('@/pages/AppCheckout.vue')
+        },
+        {
+            path: ROUTES.LOGIN,
+            component: () => import('@/pages/AppLogin.vue'),
+            meta: { public: true }
+        }
+    ]
 })
 
 router.beforeEach((to, from, next) => {
@@ -30,11 +35,11 @@ router.beforeEach((to, from, next) => {
     const isPublic = to.meta.public === true
 
     if (!isAuth && !isPublic) {
-        return next('/login')
+        return next(ROUTES.LOGIN)
     }
 
-    if (isAuth && to.path === '/login') {
-        return next('/')
+    if (isAuth && to.path === ROUTES.LOGIN) {
+        return next(ROUTES.HOME)
     }
 
     next()

@@ -15,18 +15,19 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useCartStore } from '../store/cart'
+import { useCartStore } from '@/store/cart'
+import { ROUTES } from '@/constants.js'
 
 const cart = useCartStore()
 const route = useRoute()
 const router = useRouter()
 
-const showNavigation = computed(() => route.path !== '/login')
+const showNavigation = computed(() => route.path !== ROUTES.LOGIN)
 const isAuth = computed(() => localStorage.getItem('isAuth') === 'true')
 
 function logout() {
   localStorage.removeItem('isAuth')
-  router.push('/login')
+  router.push(ROUTES.LOGIN)
 }
 </script>
 
