@@ -26,6 +26,10 @@ const router = createRouter({
             path: ROUTES.LOGIN,
             component: () => import('@/pages/AppLogin.vue'),
             meta: { public: true }
+        },
+        {
+            path: ROUTES.COUNTRIES,
+            component: () => import('@/pages/AppCountries.vue'),
         }
     ]
 })
