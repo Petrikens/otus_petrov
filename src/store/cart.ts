@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
+import type { CartItem, Product } from '@/types'
 
 export const useCartStore = defineStore('cart', {
-    state: () => ({
+    state: (): { items: CartItem[] } => ({
         items: []
     }),
     actions: {
-        addToCart(product) {
+        addToCart(product: Product) {
             const existing = this.items.find(item => item.id === product.id)
             if (existing) {
                 existing.quantity++

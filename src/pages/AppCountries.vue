@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useQuery } from '@vue/apollo-composable'
 import { gql } from '@apollo/client/core'
 

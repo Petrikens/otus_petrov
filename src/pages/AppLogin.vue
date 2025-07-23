@@ -6,17 +6,16 @@
   </form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ROUTES } from '@/constants.js'
+import { ROUTES } from '@/constants'
 
-
-const username = ref('')
-const password = ref('')
+const username = ref<string>('')
+const password = ref<string>('')
 const router = useRouter()
 
-function login() {
+function login(): void {
   if (username.value && password.value) {
     localStorage.setItem('isAuth', 'true')
     router.push(ROUTES.HOME)

@@ -1,5 +1,5 @@
 <template>
-  <Form :validation-schema="productValidationSchema" @submit="createProduct">
+  <Form :validation-schema="productValidationSchema" @submit="handleSubmit(createProduct)">
     <div>
       <label for="title">Title</label>
       <Field id="title" name="title" data-testid="title" />
@@ -24,11 +24,12 @@
   </Form>
 </template>
 
-<script setup>
-import { Field, Form, ErrorMessage } from 'vee-validate';
+<script setup lang="ts">
+import { Field, Form, ErrorMessage, useForm  } from 'vee-validate';
 import { useProductStore } from '@/store/products';
 import { useRouter } from 'vue-router';
 import { ROUTES } from '@/constants';
+import type { NewProduct } from '@/types'
 import * as yup from 'yup';
 
 const productValidationSchema = yup.object({
@@ -40,8 +41,8 @@ const productValidationSchema = yup.object({
 
 const store = useProductStore();
 const router = useRouter();
-
-const createProduct = (values) => {
+const { handleSubmit } = useForm<NewProduct>()
+const createProduct = (values: NewProduct) => {
   store.addProduct(values);
   router.push(ROUTES.HOME);
 };
