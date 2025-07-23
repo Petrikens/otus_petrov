@@ -4,5 +4,6 @@ export const ROUTES = {
     ADD_PRODUCT: '/add-product',
     PRODUCT_DETAILS: '/product/:id',
     CART: '/cart',
-    CHECKOUT: '/checkout'
+    CHECKOUT: '/checkout',
+    COUNTRIES: '/countries'
 }

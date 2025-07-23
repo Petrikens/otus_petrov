@@ -3,6 +3,7 @@
     <router-link to="/" exact-active-class="active">Главная</router-link> |
     <router-link to="/cart" active-class="active">Корзина {{ cart.items.length }}</router-link> |
     <router-link to="/checkout" active-class="active">Чекаут</router-link> |
+    <router-link to="/countries" active-class="active">Страны</router-link> |
     <router-link to="/add-product" active-class="active">Добавить товар</router-link> |
     <router-link 
       v-if="!isAuth" 
@@ -10,6 +11,7 @@
       active-class="active">Логин</router-link>
     <button v-if="isAuth" @click="logout">Выйти</button>
   </nav>
+  <AppBitcoinTicker />
 </template>
 
 <script setup>
@@ -17,6 +19,7 @@ import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCartStore } from '@/store/cart'
 import { ROUTES } from '@/constants.js'
+import AppBitcoinTicker from '@/components/AppBitcoinTicker.vue'
 
 const cart = useCartStore()
 const route = useRoute()
