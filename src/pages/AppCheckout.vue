@@ -1,5 +1,5 @@
 <template>
-  <Form :validation-schema="orderValidationSchema" @submit="postOrder">
+  <Form :validation-schema="orderValidationSchema" @submit="handleSubmit(postOrder)">
     <h2>Order Form</h2>
     <div>
       <label>Full Name</label>
@@ -51,10 +51,11 @@
   </Form>
 </template>
 
-<script setup>
-import { Field, Form, ErrorMessage } from 'vee-validate';
+<script setup lang="ts">
+import { Field, Form, ErrorMessage, useForm } from 'vee-validate';
 import * as yup from 'yup';
 import axios from 'axios';
+import type { Order } from '@/types';
 
 const orderValidationSchema = yup.object({
     name: yup.string().required(),
@@ -74,7 +75,9 @@ const orderValidationSchema = yup.object({
     agree: yup.bool().oneOf([true], 'You must agree')
   });
 
-  async function postOrder(values) {
+  const { handleSubmit } = useForm<Order>()
+
+  async function postOrder(values: Order) {
     try {
       await axios.post('https://httpbin.org/post', values);
       alert('Order placed successfully!');

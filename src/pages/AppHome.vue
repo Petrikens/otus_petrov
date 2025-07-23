@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useProducts } from '@/composables/useProducts'
 import ProductCard from '@/components/ProductCard.vue'
 import { useCartStore } from '@/store/cart'

@@ -24,12 +24,15 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
+    "@vitejs/plugin-vue-jsx": "^5.0.1",
     "@vue/test-utils": "^2.4.6",
     "cypress": "^14.5.0",
     "flush-promises": "^1.0.2",
     "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vitest": "^3.2.3",
-    "vue": "^3.5.16"
+    "vue": "^3.5.16",
+    "vue-tsc": "^3.0.3"
   }
 }
